@@ -30,13 +30,18 @@ const Detail = () => {
     );
   return (
     <div className="flex justify-center">
-      <div>
-        <p className="font-semibold text-center text-lg my-4">Details</p>
-        <div className="max-w-2xl overflow-hidden bg-gray-100">
+      <div className="mt-4">
+        <Link
+          className="shadow-lg px-2 bg-gray-100 text-sm hover:text-blue-500 hover:underline"
+          href="/"
+        >
+          Back
+        </Link>
+        <div className="max-w-2xl overflow-hidden bg-gray-100 mt-2">
           <Image
             width={500}
             height={500}
-            className="object-cover w-full h-32"
+            className="object-cover w-full h-64"
             src={detail?.url}
             alt="Article"
           />

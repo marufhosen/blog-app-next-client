@@ -1,21 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
     <nav className="relative bg-white shadow flex-shrink: 0">
-      <div className="container px-6 py-3 mx-auto md:flex">
+      <div className="container px-6 py-2 mx-auto md:flex">
         <div className="flex items-center justify-between">
-          <a href="#">
-            <Image
-              className="w-auto h-6 sm:h-7"
-              width={500}
-              height={500}
-              src="https://merakiui.com/images/full-logo.svg"
-              alt=""
-            />
-          </a>
+          <Link href="/">
+            <p className="w-24 text-xl font-semibold">
+              ED <span className="text-blue-500">SURGE</span>
+            </p>
+          </Link>
 
           <div className="flex lg:hidden">
             <button
@@ -61,49 +58,30 @@ const Navbar = () => {
         </div>
 
         {/* MOBILE MENU */}
-        <div className="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white  md:mt-0 md:p-0 md:top-0 md:relative md:opacity-100 md:translate-x-0 md:flex md:items-center md:justify-between">
+        <div className="absolute text-sm inset-x-0 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white  md:mt-0 md:p-0 md:top-0 md:relative md:opacity-100 md:translate-x-0 md:flex md:items-center md:justify-between">
           <div className="flex flex-col px-2 -mx-4 md:flex-row md:mx-10 md:py-0">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg hover:bg-gray-100 md:mx-2"
             >
               Home
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/admin/login"
               className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg hover:bg-gray-100 md:mx-2"
             >
-              About
-            </a>
-            <a
-              href="#"
-              className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg hover:bg-gray-100 md:mx-2"
-            >
-              Contact
-            </a>
+              Admin Panel
+            </Link>
           </div>
 
-          <div className="relative mt-4 md:mt-0">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-              <svg
-                className="w-5 h-5 text-gray-400"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-              </svg>
-            </span>
-
-            <input
-              type="text"
-              className="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
-              placeholder="Search"
+          <div className="mt-4 md:mt-0 flex items-center gap-2">
+            <span>Maruf Hosen</span>
+            <Image
+              width={500}
+              height={500}
+              className="object-cover w-10 h-10 rounded-full"
+              src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+              alt=""
             />
           </div>
         </div>

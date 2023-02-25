@@ -1,7 +1,13 @@
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 
-const Blog = ({ data }) => {
+const Blog = ({ data, setStatus }) => {
+  const handleLike = (id) => {
+    axios.put(`http://127.0.0.1:5000/like?id=${id}`).then((res) => {
+      setStatus("Your favorite post");
+    });
+  };
   return (
     <div className="max-w-lg overflow-hidden bg-white rounded-lg shadow-md ">
       <Image
@@ -16,19 +22,27 @@ const Blog = ({ data }) => {
         <div>
           <Link
             href={`/details?id=${data?._id}`}
-            className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform hover:text-gray-600 hover:underline"
+            className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform hover:text-gray-600 underline"
             tabIndex="0"
             role="link"
           >
             {data?.title}
           </Link>
-          <p className="mt-2 text-sm text-gray-600">{data?.description}</p>
+          <p className="mt-2 text-sm text-gray-600">
+            {`${data?.description?.substring(0, 250)}...`}{" "}
+            <Link
+              href={`/details?id=${data?._id}`}
+              className="text-blue-500 hover:underline"
+            >
+              See more
+            </Link>
+          </p>
         </div>
 
         <div className="mt-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <button>
+              <button onClick={() => handleLike(data?._id)}>
                 <HeartIcon />
               </button>
               <span className="text-xs text-gray-600 ">{data?.like} like</span>
@@ -50,7 +64,7 @@ const HeartIcon = () => {
     <svg
       stroke="currentColor"
       fill="currentColor"
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 1024 1024"
       height="1em"
       width="1em"
